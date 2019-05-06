@@ -134,15 +134,15 @@ $opcionMenu="A";
 									</div>
 									<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 										<div class="form-group">
-											<label for="idPersonaE">Seleccione a la persona:</label>
-											<select  id="idPersonaE" class="select2 form-control " style="width: 100%">
+											<label for="nombreE">Nombre de la persona:</label>
+											<select  id="nombreE" class="select2 form-control " style="width: 100%" disabled="">
 											</select>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 										<div class="form-group">
-											<label for="idCarreraE">Seleccione la carrera:</label>
-											<select  id="idCarreraE" class="select2 form-control " style="width: 100%">
+											<label for="carreraE">Carrera:</label>
+											<select  id="carreraE" class="select2 form-control " style="width: 100%">
 											</select>
 										</div>
 									</div>

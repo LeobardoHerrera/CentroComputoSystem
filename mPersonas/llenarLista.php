@@ -166,7 +166,7 @@ $consulta=mysql_query("SELECT
                               }
                           },
                          {
-                              text: 'Nueva Carrera',
+                              text: 'Nueva Persona',
                               action: function (  ) {
                                       ver_alta();
                               },

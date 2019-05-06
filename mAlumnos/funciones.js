@@ -39,6 +39,18 @@ $("#frmAlta").submit(function(e){
     var idPersona = $("#idPersona").val();
     var idCarrera = $("#idCarrera").val();
     //Validaciones
+    if(noControl.length<5){
+        alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
+
+        alertify.alert()
+        .setting({
+            'title':'Información',
+            'label':'Salir',
+            'message': 'El numero de control debe contener al menos 5 caracteres.' ,
+            'onok': function(){ alertify.message('Gracias !');}
+        }).show();
+        return false;       
+    }
     if(idPersona==0){
         alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
 
@@ -58,7 +70,7 @@ $("#frmAlta").submit(function(e){
         .setting({
             'title':'Información',
             'label':'Salir',
-            'message': 'Debes seleccionar el dato de una carrera.' ,
+            'message': 'Debes seleccionar una carrera.' ,
             'onok': function(){ alertify.message('Gracias !');}
         }).show();
         return false;       
@@ -91,63 +103,75 @@ $("#frmAlta").submit(function(e){
         return false;
 });
 
-function abrirModalEditar(nombre,paterno,materno,direccion,telefono,fecha_nac,correo,tipo,sexo,ide){
+function abrirModalEditar(idAlumno,idPersona,idCarrera,no_control){
    
-    $("#frmActuliza")[0].reset();
-    $("#nombreE").val(nombre);
-    $("#paternoE").val(paterno);
-    $("#maternoE").val(materno);
-    $("#direccionE").val(direccion);
-    $("#telefonoE").val(telefono);
-    $("#fecha_nacE").val(fecha_nac);
-    $("#correoE").val(correo);
-    $("#tipoE").val(tipo);
-    $("#sexoE").val(sexo);
-    $("#idE").val(ide);
+   $("#frmActualiza")[0].reset();
 
-    $(".select2").select2();
+    llenar_personaA(idPersona);
+    llenar_carreraA(idCarrera);
+
+    $("#idE").val(idAlumno);
+    //$("#nombreE").val(idPersona);
+    $("#idPersonaE").val(idPersona);
+    $("#idCarreraE").val(idCarrera);
+    $("#noControlE").val(no_control);
 
     $("#modalEditar").modal("show");
 
      $('#modalEditar').on('shown.bs.modal', function () {
-         $('#nombreE').focus();
+         $('#noControlE').focus();
      });   
 }
 
 $("#frmActualiza").submit(function(e){
   
-    var nombre    = $("#nombreE").val();
-    var paterno   = $("#paternoE").val();
-    var materno   = $("#maternoE").val();
-    var direccion = $("#direccionE").val();
-    var sexo      = $("#sexoE").val();
-    var telefono  = $("#telefonoE").val();
-    var fecha_nac = $("#fecha_nacE").val();
-    var correo    = $("#correoE").val();
-    var tipo      = $("#tipoE").val();
+    var noControl = $("#noControlE").val();
+    var idCarrera = $("#carreraE").val();
     var ide       = $("#idE").val();
+    
+    //Validaciones
+
+    if(noControl.length<5){
+        alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
+
+        alertify.alert()
+        .setting({
+            'title':'Información',
+            'label':'Salir',
+            'message': 'El numero de control debe contener al menos 5 caracteres.' ,
+            'onok': function(){ alertify.message('Gracias !');}
+        }).show();
+        return false;       
+    }
+
+    if(idCarrera==0){
+        alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
+
+        alertify.alert()
+        .setting({
+            'title':'Información',
+            'label':'Salir',
+            'message': 'Debes seleccionar una carrera.' ,
+            'onok': function(){ alertify.message('Gracias !');}
+        }).show();
+        $("#contra").focus();
+        return false;       
+    }
 
         $.ajax({
             url:"actualizar.php",
             type:"POST",
             dateType:"html",
             data:{
-                    'nombre':nombre,
-                    'paterno':paterno,
-                    'materno':materno,
-                    'direccion':direccion,
-                    'sexo':sexo,
-                    'telefono':telefono,
-                    'fecha_nac':fecha_nac,
-                    'correo':correo,
-                    'tipo':tipo,
+                    'noControl':noControl,
+                    'idCarrera':idCarrera,
                     'ide':ide
                  },
             success:function(respuesta){
 
             alertify.set('notifier','position', 'bottom-right');
             alertify.success('Se ha actualizado el registro' );
-            $("#frmActuliza")[0].reset();
+            $("#frmActualiza")[0].reset();
             $("#modalEditar").modal("hide");
             llenar_lista();
             },
@@ -236,6 +260,47 @@ function llenar_carrera()
         success : function(respuesta) {
             $("#idCarrera").empty();
             $("#idCarrera").html(respuesta);      
+        },
+        error : function(xhr, status) {
+            alert('Disculpe, existió un problema');
+        },
+    });
+}
+function llenar_personaA(idPersona)
+{
+    // alert(idRepre);
+    $.ajax({
+        url : 'comboPersonasA.php',
+        // data : {'id':id},
+        type : 'POST',
+        dataType : 'html',
+        success : function(respuesta) {
+            $("#nombreE").empty();
+            $("#nombreE").html(respuesta);  
+            $("#nombreE").val(idPersona);
+            $(".select2").select2();
+
+        },
+        error : function(xhr, status) {
+            alert('Disculpe, existió un problema');
+        },
+    });
+}
+
+function llenar_carreraA(idCarrera)
+{
+    // alert(idRepre);
+    $.ajax({
+        url : 'comboCarrerasA.php',
+        // data : {'id':id},
+        type : 'POST',
+        dataType : 'html',
+        success : function(respuesta) {
+            $("#carreraE").empty();
+            $("#carreraE").html(respuesta);  
+            $("#carreraE").val(idCarrera);
+            $(".select2").select2();
+
         },
         error : function(xhr, status) {
             alert('Disculpe, existió un problema');

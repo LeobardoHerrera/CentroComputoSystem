@@ -104,7 +104,7 @@ $opcionMenu="A";
 
 	<!-- Modal -->
 	<div id="modalEditar" class="modal fade" role="dialog">
-	  <div class="modal-dialog modal-lg">
+	  <div class="modal-dialog modal-md">
 
 	    <!-- Modal content-->
 	    <form id="frmActualiza">
