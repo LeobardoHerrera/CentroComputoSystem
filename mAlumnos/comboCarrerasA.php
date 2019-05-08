@@ -6,7 +6,7 @@ $consulta = mysql_query("SELECT
 							carreras.id_carrera,
 							carreras.nombre
 						FROM
-							carreras",$conexion)or die(mysql_error());
+							carreras WHERE carreras.activo=1",$conexion)or die(mysql_error());
  ?>
  	<option value="0">Seleccione...</option>
  <?php 

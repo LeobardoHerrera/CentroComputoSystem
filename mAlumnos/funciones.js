@@ -112,8 +112,8 @@ function abrirModalEditar(idAlumno,idPersona,idCarrera,no_control){
 
     $("#idE").val(idAlumno);
     //$("#nombreE").val(idPersona);
-    $("#idPersonaE").val(idPersona);
-    $("#idCarreraE").val(idCarrera);
+    //$("#idPersonaE").val(idPersona);
+    //$("#idCarreraE").val(idCarrera);
     $("#noControlE").val(no_control);
 
     $("#modalEditar").modal("show");
