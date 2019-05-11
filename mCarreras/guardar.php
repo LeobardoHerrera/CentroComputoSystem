@@ -16,7 +16,6 @@ mysql_query("SET NAMES utf8");
  								(
  								nombre,
  								abreviatura,
- 								img_representativa,
  								id_registro,
  								fecha_registro,
  								hora_registro,
@@ -26,7 +25,6 @@ mysql_query("SET NAMES utf8");
 								(
  								'$nombre',
  								'$abreviatura',
- 								'x',
  								'1',
  								'$fecha',
  								'$hora',

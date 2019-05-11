@@ -9,9 +9,8 @@ $consulta=mysql_query("SELECT
 							activo,
 							nombre,
 							abreviatura
-							
 						FROM
-							carreras",$conexion) or die (mysql_error());
+							carreras ORDER BY id_carrera DESC",$conexion) or die (mysql_error());
 // $row=mysql_fetch_row($consulta)
  ?>
 				            <div class="table-responsive">

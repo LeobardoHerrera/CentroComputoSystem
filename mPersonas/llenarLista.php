@@ -1,8 +1,10 @@
 <?php 
 // Conexion a la base de datos
 include'../conexion/conexion.php';
+
 // Codificacion de lenguaje
 mysql_query("SET NAMES utf8");
+
 // Consulta a la base de datos
 $consulta=mysql_query("SELECT
 							id_persona,
@@ -18,7 +20,7 @@ $consulta=mysql_query("SELECT
 							ap_paterno,
 							ap_materno
 						FROM
-							personas",$conexion) or die (mysql_error());
+							personas ORDER BY id_persona DESC",$conexion) or die (mysql_error());
 // $row=mysql_fetch_row($consulta)
  ?>
 				            <div class="table-responsive">
@@ -40,52 +42,52 @@ $consulta=mysql_query("SELECT
 				                    <?php 
 				                    $n=1;
 				                    while ($row=mysql_fetch_row($consulta)) {
-										$idPersona   =$row[0];
-										$activo      =$row[1];
-										$nomPersona  =$row[2];
-										$sexo        =$row[3];
-										$direccion   =$row[4];
-										$telefono    =$row[5];
-										$fecha_nac   =$row[6];
-										$correo      =$row[7];
-										$tipoPersona =$row[8];
-										$nombre      =$row[9];
-										$paterno     =$row[10];
-										$materno     =$row[11];
-										$genero      =$row[3];
+										$idPersona   = $row[0];
+										$activo      = $row[1];
+										$nomPersona  = $row[2];
+										$sexo        = $row[3];
+										$direccion   = $row[4];
+										$telefono    = $row[5];
+										$fecha_nac   = $row[6];
+										$correo      = $row[7];
+										$tipoPersona = $row[8];
+										$nombre      = $row[9];
+										$paterno     = $row[10];
+										$materno     = $row[11];
+										$genero      = $row[3];				
 										$sexo=($sexo=='M')?'<i class="fas fa-male fa-lg"></i>':'<i class="fas fa-female fa-lg"></i>';
-										$checado=($activo==1)?'checked':'';
+										$checado=($activo==1)?'checked':'';		
 										$desabilitar=($activo==0)?'disabled':'';
 										$claseDesabilita=($activo==0)?'desabilita':'';
-				                      ?>
+															?>
 				                      <tr>
 				                        <td >
-				                          <p id="<?php echo "tConsecutivo".$n; ?>"class="<?php echo $claseDesabilita; ?>">
+				                          <p id="<?php echo "tConsecutivo".$n; ?>" class="<?php echo $claseDesabilita; ?>">
 				                          	<?php echo "$n"; ?>
 				                          </p>
 				                        </td>
 				                        <td>
-				                          <p id="<?php echo "tPersona".$n; ?>"class="<?php echo $claseDesabilita; ?>">
+																<p id="<?php echo "tPersona".$n; ?>" class="<?php echo $claseDesabilita; ?>">
 				                          	<?php echo $nomPersona; ?>
 				                          </p>
 				                        </td>
 				                        <td>
-				                          <p id="<?php echo "tCorreo".$n; ?>" class="<?php echo $claseDesabilita; ?>">
+																<p id="<?php echo "tCorreo".$n; ?>" class="<?php echo $claseDesabilita; ?>">
 				                          	<?php echo $correo; ?>
 				                          </p>
 				                        </td>
 				                        <td>
-				                          <p id="<?php echo "tTelefono".$n; ?>"class="<?php echo $claseDesabilita; ?>">
+																<p id="<?php echo "tTelefono".$n; ?>"  class="<?php echo $claseDesabilita; ?>">
 				                          	<?php echo $telefono; ?>
 				                          </p>
 				                        </td>
 				                        <td>
-				                          <p id="<?php echo "tSexo".$n; ?>" class="<?php echo $claseDesabilita; ?>">
+																<p id="<?php echo "tSexo".$n; ?>" class="<?php echo $claseDesabilita; ?>">
 				                          	<?php echo $sexo; ?>
-				                          </p>
-				                        </td>	
+				                          </p>	
+																</td>
 				                        <td>
-				                          <button id="<?php echo "boton".$n; ?>" <?php echo $desabilitar ?> type="button" class="btn btn-login btn-sm" 
+				                          <button id="<?php echo "boton".$n; ?>" <?php echo $desabilitar ?>  type="button" class="btn btn-login btn-sm" 
 				                          onclick="abrirModalEditar(
 				                          							'<?php echo $nombre ?>',
 				                          							'<?php echo $paterno ?>',
@@ -94,10 +96,9 @@ $consulta=mysql_query("SELECT
 				                          							'<?php echo $telefono ?>',
 				                          							'<?php echo $fecha_nac ?>',
 				                          							'<?php echo $correo ?>',
-				                          							'<?php echo $tipoPersona ?>',
-				                          							'<?php echo $genero ?>',
-				                          							'<?php echo $idPersona ?>'
-
+																								'<?php echo $tipoPersona ?>',
+																								'<?php echo $genero ?>',
+																								'<?php echo $idPersona ?>'
 				                          							);">
 				                          	<i class="far fa-edit"></i>
 				                          </button>
@@ -175,9 +176,11 @@ $consulta=mysql_query("SELECT
                   ]
               } );
           } );
+
       </script>
       <script>
             $(".interruptor").bootstrapToggle('destroy');
             $(".interruptor").bootstrapToggle();
       </script>
+    
     

@@ -22,9 +22,9 @@ mysql_query("SET NAMES utf8");
  								)
 							VALUES
 								(
- 								'$idPersona ',
+ 								'$idPersona',
  								'$idCarrera',
- 								'$noControl ',
+ 								'$noControl',
  								'1',
  								'$fecha',
  								'$hora',

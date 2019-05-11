@@ -1,12 +1,12 @@
 <?php
 //se manda llamar la conexion
 include("../conexion/conexion.php");
+
 $nombre    = $_POST["nombre"];
 $paterno   = $_POST["paterno"];
 $materno   = $_POST["materno"];
 $direccion = $_POST["direccion"];
 $telefono  = $_POST["telefono"];
-$fecha_nac = $_POST["fecha_nac"];
 $correo    = $_POST["correo"];
 $tipo      = $_POST["tipo"];
 $sexo      = $_POST["sexo"];
@@ -57,4 +57,5 @@ mysql_query("SET NAMES utf8");
  								'1'
 								)
 							",$conexion)or die(mysql_error());
+
 ?>

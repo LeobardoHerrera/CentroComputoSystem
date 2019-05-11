@@ -2,21 +2,27 @@
 //se manda llamar la conexion
 include("../conexion/conexion.php");
 
-$valor = $_POST["valor"];
-$id    = $_POST["id"];
+$contra  = $_POST["contra"];
 
-$fecha=date("Y-m-d"); 
-$hora=date ("H:i:s");
+$contraMD5=md5($contra);
 
-$valor =($valor==1)?0:1;
+$ide     = $_POST["ide"];
+
+$usuario = trim($usuario);
+// $contra  = trim($contra);
+$pVez=0;
+
+$fecha   = date("Y-m-d"); 
+$hora    = date ("H: i: s");
 
 mysql_query("SET NAMES utf8");
  $insertar = mysql_query("UPDATE usuarios SET
-							activo='$valor',
+							contra='$contraMD5',
+							pvez='$pVez',
 							fecha_registro='$fecha',
 							hora_registro='$hora',
 							id_registro='1'
-						WHERE id_usuario='$id'
+						WHERE id_usuario='$ide'
 							 ",$conexion)or die(mysql_error());
 
 ?>

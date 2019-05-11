@@ -1,7 +1,7 @@
 /*-------------Inicio Selecciona color-------------*/
 :root {
-	--colorPrimario  : #2f3640;
-	--colorSecundario: #4cd137;
+	--colorPrimario  : #576574;
+	--colorSecundario: #44bd32;
 	--colorTerciario : #fff;
 }
 
@@ -32,6 +32,10 @@ textarea:focus, input:focus, input[type]:focus {
 .salto {
 	margin-bottom: 30px;
 }
+
+.desabilita{
+	color:#95a5a6;
+}
 /*-------------Fin General-------------*/
 
 
@@ -43,9 +47,6 @@ section.iconos ul li a{
 	border-radius: 5px;
 	margin-top   : 2px;
 	color        : var(--colorPrimario);
-}
-.desabilita{
-	color:#ccc;
 }
 
 .contenedor{
@@ -73,7 +74,7 @@ p.user {
 	margin-top   : 4px;
 	margin-left  : 4px;
 	margin-right : 4px;
-	color        : var(--colorTerciario);
+	color        : var(--colorSecundario);
 	border-radius: 4px;
 	font-weight  : bolder;
 	display      : block;
@@ -208,7 +209,7 @@ h3{
 .contenido,.titulo{
 	margin-bottom: 10px;
 	height       : 100%;
-	display      : inline-block;
+	display      : block;
 	min-width    : 100%;
 	padding      : 10px;
 	min-height   : 400px;
@@ -272,6 +273,11 @@ body.login{
 }
 
 .btn-login:hover{
+	background: transparent;
+	border    :1px solid var(--colorPrimario);
+	color     :var(--colorPrimario);
+}
+.btn-login:focus{
 	background: transparent;
 	border    :1px solid var(--colorPrimario);
 	color     :var(--colorPrimario);
