@@ -17,7 +17,7 @@ $consulta=mysql_query("SELECT
 						fecha_registro,
 						contra
 						FROM
-						usuarios",$conexion) or die (mysql_error());
+						usuarios ORDER BY id_usuario DESC",$conexion) or die (mysql_error());
 // $row=mysql_fetch_row($consulta)
  ?>
 				            <div class="table-responsive">

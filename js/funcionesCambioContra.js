@@ -1,3 +1,8 @@
+function cambiarContra(){
+  $("#modalEditarContra").modal("show");
+  $("#frmEditarContra")[0].reset();
+  $("#contraC").focus();
+}
 $("#frmEditarContra").submit(function(e){
     
     var contra  = $("#contraC").val();
@@ -44,22 +49,22 @@ $("#frmEditarContra").submit(function(e){
         e.preventDefault();
         return false;
 });
-function mostrarContra(){
-    var btnMostrar=$('#btnMostrar').val();
+function mostrarContraCambio(){
+    var btnMostrar=$('#btnMostrarC').val();
     // console.log(btnMostrar);
     preCarga(300,2);
     if(btnMostrar=='oculto'){
         $("#contraC").attr("type","text");
         $("#vContraC").attr("type","text");
-        $("#btnMostrar").attr("value","visto");
-        $("#icoMostrar").removeClass("far fa-eye fa-lg");
-        $("#icoMostrar").addClass("far fa-eye-slash fa-lg");
+        $("#btnMostrarC").attr("value","visto");
+        $("#icoMostrarC").removeClass("far fa-eye fa-lg");
+        $("#icoMostrarC").addClass("far fa-eye-slash fa-lg");
     }
     else{
         $("#contraC").attr("type","password");
         $("#vContraC").attr("type","password");
-        $("#btnMostrar").attr("value","oculto");
-        $("#icoMostrar").removeClass("far fa-eye-slash fa-lg");
-        $("#icoMostrar").addClass("far fa-eye fa-lg");       
+        $("#btnMostrarC").attr("value","oculto");
+        $("#icoMostrarC").removeClass("far fa-eye-slash fa-lg");
+        $("#icoMostrarC").addClass("far fa-eye fa-lg");       
     }
 }

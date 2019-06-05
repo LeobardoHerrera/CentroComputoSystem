@@ -96,11 +96,28 @@ $("#frmAlta").submit(function(e){
                     'contra':contra
                  },
             success:function(respuesta){
-              
-            alertify.set('notifier','position', 'bottom-right');
-            alertify.success('Se ha guardado el registro' );
-            $("#frmAlta")[0].reset();
-            llenar_persona();
+                console.log(respuesta);
+            if (respuesta==1) {
+                alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
+
+                        alertify.alert()
+                        .setting({
+                            'title':'Operación Denegada',
+                            'label':'Aceptar',
+                            'message': 'Este usuario ya existe.' ,
+                            'onok': function(){ 
+                                alertify.message('Gracias !');
+                                $("#usuario").val('');
+                                $("#usuario").focus();
+
+                            }
+                        }).show();  
+            }else{
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.success('Se ha guardado el registro' );
+                $("#frmAlta")[0].reset();
+                llenar_persona();
+            }
             },
             error:function(xhr,status){
                 alert(xhr);
@@ -110,7 +127,7 @@ $("#frmAlta").submit(function(e){
         return false;
 });
 
-function abrirModalEditar(idUsuario,idPersona,usuario,contra){
+function abrirModalEditar(idUsuario,idPersona,usuario){
    
     $("#frmActuliza")[0].reset();
 
@@ -119,8 +136,8 @@ function abrirModalEditar(idUsuario,idPersona,usuario,contra){
     $("#idE").val(idUsuario);
     
     $("#usuarioE").val(usuario);
-    $("#contraE").val(contra);
-    $("#vContraE").val(contra);
+    // $("#contraE").val(contra);
+    // $("#vContraE").val(contra);
 
     $("#modalEditar").modal("show");
 
@@ -173,16 +190,33 @@ $("#frmActuliza").submit(function(e){
             dateType:"html",
             data:{
                     'usuario':usuario,
-                    'contra':contra,
                     'ide':ide
                  },
             success:function(respuesta){
+            console.log(respuesta);
+            if (respuesta==1) {
+                        alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
+                        alertify.alert()
+                        .setting({
+                            'title':'Operación Denegada',
+                            'label':'Aceptar',
+                            'message': 'Este usuario ya existe.' ,
+                            'onok': function(){ 
+                                alertify.message('Gracias !');
+                                $("#usuarioE").val('');
+                                $("#usuarioE").focus();
 
-            alertify.set('notifier','position', 'bottom-right');
-            alertify.success('Se ha actualizado el registro' );
-            $("#frmActuliza")[0].reset();
-            $("#modalEditar").modal("hide");
-            llenar_lista();
+                            }
+                        }).show();  
+            }else{
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.success('Se ha actualizado el registro' );
+                $("#frmActuliza")[0].reset();
+                $("#modalEditar").modal("hide");
+                llenar_lista();
+            }
+
+            
             },
             error:function(xhr,status){
                 alert(xhr);
@@ -316,7 +350,7 @@ function restaurarContra(idUser){
 }
 function mostrarContra(){
     var btnMostrar=$('#btnMostrar').val();
-    // console.log(btnMostrar);
+    //console.log(btnMostrar);
     preCarga(300,2);
     if(btnMostrar=='oculto'){
         $("#contraE").attr("type","text");
@@ -352,4 +386,24 @@ function llenar_personaU(idPersona)
             alert('Disculpe, existió un problema');
         },
     });
+}
+function imprimir(){
+
+    var titular = "Lista de Usuarios";
+    var mensaje = "¿Deseas generar un archivo con PDF oon la lista de usuarios activos";
+    // var link    = "pdfListaPersona.php?id="+idPersona+"&datos="+datos;
+    var link    = "pdfListaUsuario.php?";
+
+    alertify.confirm('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
+    alertify.confirm(
+        titular, 
+        mensaje, 
+        function(){ 
+            window.open(link,'_blank');
+            }, 
+        function(){ 
+                alertify.error('Cancelar') ; 
+                // console.log('cancelado')
+              }
+    ).set('labels',{ok:'Generar PDF',cancel:'Cancelar'}); 
 }

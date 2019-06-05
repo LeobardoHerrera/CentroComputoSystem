@@ -13,7 +13,7 @@ $usuario = trim($usuario);
 $pVez=0;
 
 $fecha   = date("Y-m-d"); 
-$hora    = date ("H: i: s");
+$hora    = date ("H:i:s");
 
 mysql_query("SET NAMES utf8");
  $insertar = mysql_query("UPDATE usuarios SET

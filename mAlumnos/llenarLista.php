@@ -15,7 +15,7 @@ $consulta=mysql_query("SELECT
 					   (SELECT personas.ap_materno FROM personas WHERE personas.id_persona=alumnos.id_persona) AS mAlumno,
 					   (SELECT carreras.nombre FROM carreras WHERE carreras.id_carrera=alumnos.id_carrera) AS Carrera,
 					   fecha_registro
-					   FROM alumnos",$conexion) or die (mysql_error());
+					   FROM alumnos ORDER BY id_alumno DESC",$conexion) or die (mysql_error());
 // $row=mysql_fetch_row($consulta)
  ?>
 				            <div class="table-responsive">

@@ -1,12 +1,28 @@
+<?php
+$fecha1=date("Y-m-d");
+$fecha2=date("Y-m-d");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Sistema de Reistros de Alumnos</title>
+	<title>Sistema de Registros de Alumnos</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../plugins/fontawesome-free-5.8.1-web/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+	<!-- Estilos para la tabla -->
+	<!-- DataTableButtons -->
+     <link rel="stylesheet" href="../plugins/dataTableButtons/buttons.dataTables.min.css">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
+
+    <!-- bootstrap-toggle-master -->
+    <link href="../plugins/bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
+    <link href="../plugins/bootstrap-toggle-master/stylesheet.css" rel="stylesheet">
+	
 
 	<!-- Alertify	 -->
 	<link rel="stylesheet" type="text/css" href="../plugins/alertifyjs/css/alertify.css">
@@ -16,82 +32,107 @@
 	<header>
 		<?php 
 			include('../layout/encabezado.php');
+			include('../layout/modalContra.php');
 		 ?>
 	</header><!-- /header -->	
 	<div class="container-fluid" >
 		<div class="row" id="cuerpo" style="display:none">
-			<div class="col-xs-0 col-sm-3 col-md-2 col-lg-2">
+			<div class="col-xs-0 col-sm-3 col-md-2 col-lg-2 vertical">
 			<?php 
 				include('../layout/menuv.php');
 			 ?>
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
-			   <div class="titulo borde sombra">
-			        <h3>Lista de alumnos ingresados al CC</h3>
-			   </div>	
-			   <div class="contenido borde sombra">
-			        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam obcaecati eum, sit accusantium, quis recusandae consequatur tempora ipsam quidem odio cum ab rerum? Officia quis ad, fugit ut eligendi aliquid!
-					Dolorum ea doloremque ex. Quam perspiciatis doloremque, iure illum expedita earum ut eaque autem hic reiciendis quasi quaerat deleniti, corrupti maxime doloribus tempore assumenda illo necessitatibus labore, veritatis dolores voluptatibus.
-					Reprehenderit harum itaque ab veritatis non sint repellat ipsam. Obcaecati, perferendis dolor veritatis quas odio voluptates? Possimus aliquam sapiente eligendi sed cupiditate, minima tempora veritatis delectus quibusdam, libero architecto vitae?
-					Est sint laborum eligendi magnam praesentium, incidunt optio quaerat, veniam ad aspernatur non beatae quibusdam, doloribus voluptate repellat qui odio recusandae quis a! Officiis sapiente odio molestiae eius dicta a!
-					Tempore atque dicta excepturi, nobis sit ipsam dolorum saepe, corrupti a dolores eos officiis voluptatibus vel ipsum consequuntur minima asperiores cupiditate dignissimos doloremque ex odio? Nam inventore dicta sapiente aut?
-					Unde voluptatum vel tenetur, distinctio voluptatibus omnis illo quam voluptate, officia exercitationem architecto. Enim cum tempore libero velit animi? Iusto nihil recusandae ratione incidunt excepturi nam voluptatibus voluptas ea reiciendis.
-					Sequi omnis tenetur quisquam. Eligendi similique autem nesciunt obcaecati veniam, possimus consectetur minima deleniti, atque odio expedita laborum earum praesentium, quidem tenetur. Non, soluta odio nobis possimus perferendis reprehenderit. Rerum.
-					Ab molestiae accusantium itaque labore. Adipisci dicta soluta perferendis omnis facilis maxime recusandae in, asperiores sint repellat obcaecati a. Nam aut earum, harum corporis voluptatem minima et inventore ipsam deserunt.
-					Modi dolores exercitationem ea laborum animi officiis atque similique eum blanditiis, adipisci, aspernatur quisquam praesentium doloribus dicta repellat? Cum exercitationem molestiae temporibus provident soluta facere non recusandae accusamus omnis ratione.
-					Quos, porro suscipit quam voluptatibus itaque dignissimos impedit eius maxime incidunt amet possimus tempore qui ducimus doloremque, libero, debitis cupiditate accusamus corporis? Nobis veniam, nihil error minus voluptate repudiandae nisi?
-					Voluptatum laborum exercitationem laudantium dignissimos repellendus velit consequuntur rerum optio, quam atque facere commodi voluptatem at doloribus molestiae explicabo enim eaque ea fugit alias. Harum fugiat numquam quibusdam deserunt nisi?
-					Reiciendis laudantium laboriosam hic iste magni accusantium neque dolorem dignissimos dolor quis nemo temporibus ad eos, nesciunt maxime quidem voluptas itaque architecto eaque fuga perferendis vel aspernatur et repellendus. Minus.</p>
-					<!-- Modal -->
-	<div id="modalEditarContra" class="modal fade" role="dialog">
-	  <div class="modal-dialog modal-md">
-
-	    <!-- Modal content-->
-	    <form id="frmEditarContra">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Cambiar mi contraseña</h4>
-	      </div>
-	      <div class="modal-body">
-				<input type="hidden" id="idC" value="<?php echo $idC;?>">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-						<div class="form-group">
-							<label for="contraC">Nueva Contraseña:</label>
-							<input type="password" id="contraC" class="form-control " required="" placeholder="Escribe la contraseña" autofocus="">
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-						<div class="form-group">
-							<label for="vContraC">Verificar Nueva Contraseña:</label>
-							<input type="password" id="vContraC" class="form-control " required="" placeholder="Vuelve a esrcribir la contraseña">
-						</div>
-					</div>
-					<hr class="linea">
-				</div>
-	      </div>
-	      <div class="modal-footer">
-				<div class="row">
-					<div class="col-lg-12">
-						<button type="button" id="btnCerrar" class="btn btn-login  btn-flat  pull-left" data-dismiss="modal">Cerrar</button>
-						<button type="button" id="btnMostrar" class="btn btn-login  btn-flat  pull-left" onclick="mostrarContra()" value="oculto">
-						<i class="far fa-eye fa-lg" id="icoMostrar"></i>
+				<div class="titulo borde sombra">
+			        <h3 align="center">Listado de Registros</h3>
+			   </div>
+				<div class="contenido borde sombra">
+				    <div class="container-fluid">
+				    	<button type="submit" class="btn btn-login  btn-flat  pull-left" id="btnVerRegistro" onclick="verUltimoAcceso();" value="activado">
+							<i class="far fa-address-card"></i>
+							Ver Ùltimo Registro
 						</button>
-						<input type="submit" class="btn btn-login  btn-flat  pull-right" value="Actualizar Información">	
+						<button type="submit" class="btn btn-login  btn-flat  pull-left" id="btnOcultarRegistro" onclick="ocultarUltimoAcceso();" value="desactivado" style="display: none;">
+							<i class="far fa-address-card"></i>
+							Ocultar Ùltimo Registro
+						</button>
+				    	<section id="ultimoRegistro" style="margin-top: 45px; display: none;">
+				    		<div class="row borde ultimoacceso " id="ult">
+				    			<p><h3 class="colorLetra" align="center">Último registro del sistema</h3></p>
+				    			<hr>
+				    			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+									<div class="form-group">
+										<img src="../img/logo.JPG" alt="FOTOGRAFIA" width="160px;" height="180px" class="borde pull-right" id="imgUA">
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+									<div class="form-group">
+										<label for="nombre" class="colorLetra">Nombre:</label>
+										<div class="form-group has-feedback">
+											<input type="text" id="nombre" class="form-control" placeholder="Nombre" disabled="">
+											<span class="glyphicon glyphicon-user form-control-feedback"></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+									<div class="form-group">
+										<label for="nombre" class="colorLetra">Número de control:</label>
+										<div class="form-group has-feedback">
+											<input type="text" id="matricula" class="form-control" placeholder="Nombre" disabled="">
+											<span class="glyphicon glyphicon-user form-control-feedback"></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+									<div class="form-group">
+										<label for="carrera" class="colorLetra">Carrera:</label>
+										<div class="form-group has-feedback">
+											<input type="text" id="carrera" class="form-control" placeholder="Carrera" disabled="">
+											<span class="glyphicon glyphicon-book form-control-feedback"></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+									<div class="form-group">
+										 <label class="colorLetra">Mensaje:</label>
+						                <textarea class="form-control" id="descripcion" placeholder="Mensaje para el usuario" disabled=""></textarea>
+									</div>
+								</div>
+				    			
+				    		</div>
+				    	</section>
+				        <section id="fechas" style="margin-top: 60px;">
+            				<!-- <form id="frmAlta"> -->
+
+								<div class="row">
+
+									<div class="form-group">
+
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+											<br>
+											
+											<label class="colorLetra">Seleccione las fechas:</label>
+											<input type="date" id="fecha1" class="form-control" placeholder="yyyy-mm-dd" value="<?php echo $fecha1;?>" onchange="llenar_lista();">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5" style="margin-top:30px;">
+											<input type="date" id="fecha2" class="form-control" placeholder="yyyy-mm-dd" value="<?php echo $fecha2;?>" onchange="llenar_lista();">
+										</div>
+									</div>
+								</div>
+							<!-- </form> -->
+						</section>
+						<br>
+					 	<section id="lista">
+		            
+					    </section>
 					</div>
 				</div>
-	      </div>
-	    </div>
-		</form>
-	  </div>
-	</div>
-	<!-- Modal -->
-			   </div>	
-
-			</div>			
+			</div>
+				 	
 		</div>
-	</div>
+	</div>	
 	<footer class="fondo">
 		<?php 
 			include('../layout/pie.php');
@@ -103,19 +144,43 @@
 	<!-- Preloaders -->
     <script src="../plugins/Preloaders/jquery.preloaders.js"></script>
 	
+	<script src="funciones.js"></script>
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
-	<script src="../js/cambiarContra.js"></script>
-	<script src="../js/funciones.js"></script>
+	<script src="../js/funcionesCambioContra.js"></script>
 	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Js para la Tabla -->
+	<!-- DataTables -->
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- bootstrap-toggle-master -->
+    <script src="../plugins/bootstrap-toggle-master/doc/script.js"></script>
+    <script src="../plugins/bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
+
+     <!-- dataTableButtons -->
+    <script type="text/javascript" src="../plugins/dataTableButtons/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="../plugins/dataTableButtons/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="../plugins/dataTableButtons/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="../plugins/dataTableButtons/jszip.min.js"></script>
+    <script type="text/javascript" src="../plugins/dataTableButtons/pdfmake.min.js"></script>
+    <script type="text/javascript" src="../plugins/dataTableButtons/vfs_fonts.js"></script>
+    <script type="text/javascript" src="../plugins/dataTableButtons/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="../plugins/dataTableButtons/buttons.print.min.js"></script>
 
 	<!-- alertify -->
 	<script type="text/javascript" src="../plugins/alertifyjs/alertify.js"></script>
 	<script>
 		window.onload = function() {
 			$("#cuerpo").fadeIn("slow");
+			ultimoRegistro();
 		};	
+	</script>
+	
+	<!-- Llamar la funcion para llenar la lista -->
+	<script type="text/javascript">
+		llenar_lista();
 	</script>
 </body>
 </html>
