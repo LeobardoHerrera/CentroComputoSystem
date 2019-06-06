@@ -14,13 +14,13 @@
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
 							<label for="contraC">Nueva Contraseña:</label>
-							<input type="password" id="contraC" class="form-control " required="" placeholder="Escribe la contraseña" autofocus="">
+							<input type="password" id="contraC" class="form-control" required="" placeholder="Escribe la contraseña" autofocus="">
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
 							<label for="vContraC">Verificar Nueva Contraseña:</label>
-							<input type="password" id="vContraC" class="form-control " required="" placeholder="Vuelve a esrcribir la contraseña">
+							<input type="password" id="vContraC" class="form-control" required="" placeholder="Vuelve a esrcribir la contraseña">
 						</div>
 					</div>
 					<hr class="linea">

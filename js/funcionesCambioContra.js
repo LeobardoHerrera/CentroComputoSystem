@@ -24,7 +24,7 @@ $("#frmEditarContra").submit(function(e){
        }
 
     var ide = $("#idC").val();
-    //alert(ide);
+    // alert(ide);
 
         $.ajax({
             url:"../inicio/cambiarContra.php",

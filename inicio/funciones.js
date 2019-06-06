@@ -35,9 +35,23 @@ function ultimoRegistro(){
                 $("#nombre").val(respuesta.split(",")[1]);
                 $("#carrera").val(respuesta.split(",")[2]);
                 $("#descripcion").val(respuesta.split(",")[3]);
-                var matricula=(respuesta.split(",")[0]);
-                $("#imgUA").attr("src","../images/"+matricula+".jpg");
+                var clave=(respuesta.split(",")[0]);
+                // $("#imgUA").attr("src","../images/"+clave+".jpg");
+                var sexo=respuesta.split(",")[4];
+                var ruta=respuesta.split(",")[5];
+                if (ruta=="1") {
+                    $("#imgUA").attr("src","../images/"+clave+".jpg");
+                }
+                else{
+                    if (sexo=='M') {
+                        $("#imgUA").attr("src","../images/hombre.jpg");
+                    }else{
+                        $("#imgUA").attr("src","../images/mujer.jpg");
+                    }
+                }
             }else{ 
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.warning('Error en el sistema' );
             }
         },
         error:function(xhr,status){

@@ -151,9 +151,9 @@ $opcionMenu="A";
 				<div class="row">
 					<div class="col-lg-12">
 						<button type="button" id="btnCerrar" class="btn btn-login  btn-flat  pull-left" data-dismiss="modal">Cerrar</button>
-						<button type="button" id="btnMostrar" class="btn btn-login  btn-flat  pull-left" onclick="mostrarContra()" value="oculto">
+						<!-- <button type="button" id="btnMostrar" class="btn btn-login  btn-flat  pull-left" onclick="mostrarContra()" value="oculto">
 						<i class="far fa-eye fa-lg" id="icoMostrar"></i>
-						</button>
+						</button> -->
 						<input type="submit" class="btn btn-login  btn-flat  pull-right" value="Actualizar Información">	
 					</div>
 				</div>

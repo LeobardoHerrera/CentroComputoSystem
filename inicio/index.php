@@ -144,11 +144,7 @@ $fecha2=date("Y-m-d");
 	<!-- Preloaders -->
     <script src="../plugins/Preloaders/jquery.preloaders.js"></script>
 	
-	<script src="funciones.js"></script>
-	<script src="../js/menu.js"></script>
-	<script src="../js/precarga.js"></script>
-	<script src="../js/salir.js"></script>
-	<script src="../js/funcionesCambioContra.js"></script>
+	
 	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Js para la Tabla -->
@@ -168,7 +164,12 @@ $fecha2=date("Y-m-d");
     <script type="text/javascript" src="../plugins/dataTableButtons/vfs_fonts.js"></script>
     <script type="text/javascript" src="../plugins/dataTableButtons/buttons.html5.min.js"></script>
     <script type="text/javascript" src="../plugins/dataTableButtons/buttons.print.min.js"></script>
-
+<!-- funciones propias -->
+    <script src="funciones.js"></script>
+	<script src="../js/menu.js"></script>
+	<script src="../js/precarga.js"></script>
+	<script src="../js/salir.js"></script>
+	<script src="../js/funcionesCambioContra.js"></script>
 	<!-- alertify -->
 	<script type="text/javascript" src="../plugins/alertifyjs/alertify.js"></script>
 	<script>

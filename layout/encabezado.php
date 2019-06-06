@@ -4,6 +4,7 @@
 	$idC=$_SESSION["idUsuario"];
 ?>		
 		<section class="contenedor iconos fondo">
+			<!-- inputid -->
 			<ul class="nav-pills pull-right menu-bar">
 				<li class="list-unstyled">
 					<a href="#" class="color  borde" id="menuV">

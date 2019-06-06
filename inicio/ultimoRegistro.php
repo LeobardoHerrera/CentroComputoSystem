@@ -18,7 +18,8 @@ $consulta = mysql_query("SELECT
 						 movimientos.no_control,
 						 movimientos.fecha_movimiento,
 						 movimientos.hora_movimiento,
-						 movimientos.tipo
+						 movimientos.tipo,
+                        (SELECT personas.sexo FROM personas WHERE personas.id_persona=movimientos.id_persona) AS sexo
 						from movimientos
 						INNER JOIN alumnos on movimientos.id_alumno=alumnos.id_alumno
 						INNER JOIN carreras on movimientos.id_carrera=carreras.id_carrera
@@ -34,7 +35,7 @@ $consulta = mysql_query("SELECT
 	$nCarrera =$row[6];
 	$nControl =$row[7];
 	$tipo     =$row[10];
-
+	$sexo     =$row[11];
 
     if ($contador!=0) {
     	/*CHECA CUAL ES EL TIPO DE MOVIMIENTO*/
@@ -48,6 +49,19 @@ $consulta = mysql_query("SELECT
 		
     	$contador=0;
     }
+    $foto ='../images/'.$nControl.'.jpg';
+    if (file_exists($foto)){
+        $varRuta="1";
+             // $("#img").attr("src","../images/"+$nControl+".jpg"); 
+       }
+      else{
+        $varRuta="2";
+          // if (sexo=='M') {
+          //     $("#img").attr("src","../images/hombre.jpg");
+          // }else{
+          //     $("#img").attr("src","../images/mujer.jpg");
+          // }
+      }
 
-   echo "$nControl,$nombre,$nCarrera,$descripcion";
+   echo "$nControl,$nombre,$nCarrera,$descripcion,$sexo,$varRuta";
 ?>
